@@ -26,6 +26,4 @@ public class Item {
     private String description;
 
     private BigDecimal price;
-
-    private String imageUrl;
 }
