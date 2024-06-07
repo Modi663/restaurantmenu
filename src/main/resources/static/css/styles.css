@@ -1,31 +1,210 @@
+/* Основные стили */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-table {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    box-sizing: border-box;
+    background-image: url('../images/greek-pattern.png'); 
+    background-position: center;
+
 }
 
-table, th, td {
-    border: 1px solid black;
+.nav-link.active {
+    background-color: #5F9EA0;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
+header {
+    background-color: #37678f;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    width: 100%;
 }
 
-img {
-    max-width: 100px;
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #4682B4;
+    padding: 15px;
+    flex-wrap: wrap;
 }
 
-form {
-    margin-top: 20px;
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
 }
 
-form div {
+nav a:hover {
+    background-color: #5F9EA0;
+}
+
+.container {
+    width: calc(100% - 80px); /* Учтите ширину паттерна */
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex: 1;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 0;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+h2 {
+    color: #37678f;
+    margin-bottom: 20px;
+}
+
+.menu-category {
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    background-color: #f4f4f9;
+    padding: 15px;
     margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+.menu-item h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.2em; /* Увеличен размер шрифта */
+}
+
+.menu-item p {
+    margin: 0;
+    font-size: 1.1em; /* Увеличен размер шрифта */
+}
+
+.menu-item .price {
+    color: #4682B4;
+    font-weight: bold;
+    font-size: 1.1em; /* Увеличен размер шрифта */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #222a31;
+    color: #fff;
+    margin-top: auto;
+    width: 100%;
+}
+
+.kontakt {
+    font-size: 80%;
+    text-align: center;
+}
+
+/* Адаптивные стили */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    body {
+        background-size: contain; /* Изменим размер фона для мобильных устройств */
+        background-position: top;
+    }
+
+    header {
+        font-size: 1.5em;
+    }
+    nav {
+        padding: 10px;
+    }
+    nav a {
+        margin: 5px;
+        font-size: 1.2em; /* Увеличен размер шрифта */
+    }
+    .container {
+        margin: 10px auto;
+        padding: 15px;
+        width: calc(100% - 40px);
+        max-width: 100%;
+    }
+    .menu-item h3 {
+        font-size: 1.4em; /* Увеличен размер шрифта */
+    }
+    .menu-item p {
+        font-size: 1.3em; /* Увеличен размер шрифта */
+    }
+    .menu-item .price {
+        font-size: 1.3em; /* Увеличен размер шрифта */
+    }
+}
+
+@media (max-width: 480px) {
+
+    body {
+        background-size: contain; /* Изменим размер фона для мобильных устройств */
+        background-position: top;
+    }
+
+    header {
+        font-size: 1.8em; /* Увеличен размер шрифта */
+        padding: 10px 0;
+    }
+    nav {
+        padding: 10px;
+    }
+    nav a {
+        margin: 2px;
+        font-size: 1.4em; /* Увеличен размер шрифта */
+        padding: 8px 10px;
+    }
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+        width: calc(100% - 20px);
+        max-width: 100%;
+        flex: 1;
+    }
+    .menu-item {
+        padding: 10px; /* Уменьшение padding для меньших экранов */
+    }
+    .menu-item h3 {
+        font-size: 1.6em; /* Увеличен размер шрифта */
+    }
+    .menu-item p {
+        font-size: 1.5em; /* Увеличен размер шрифта */
+    }
+    .menu-item .price {
+        font-size: 1.5em; /* Увеличен размер шрифта */
+    }
+    footer {
+        padding: 5px 0;
+        font-size: 1.2em; /* Увеличен размер шрифта */
+    }
 }

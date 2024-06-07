@@ -1,105 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Unser Menü</title>
+    <title>Volkswohl Restaurant</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            text-align: center;
-            color: #444;
-        }
-        .menu-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .menu-item img {
-            max-width: 100px;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-        .menu-item h3 {
-            margin: 0;
-            color: #333;
-        }
-        .menu-item p {
-            margin: 5px 0;
-        }
-        .menu-item .price {
-            font-weight: bold;
-            color: #444;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: #fff;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
 </head>
 <body>
 <header>
-    <h1>Unser Menü</h1>
+    <h1>Volkswohl Restaurant</h1>
 </header>
 <nav>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/menu}">Menü</a>
-    <a th:href="@{/contact}">Kontakt</a>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
 </nav>
 <div class="container">
-    <h2>Köstliche Gerichte</h2>
-    <div th:each="item : ${items}" class="menu-item">
-        <img th:src="@{${item.imageUrl}}" alt="Bild von [[${item.name}]]">
-        <div>
-            <h3 th:text="${item.name}">Gerichtname</h3>
-            <p th:text="${item.description}">Gerichtbeschreibung</p>
-            <p class="price" th:text="${item.price} + ' €'">Preis</p>
-        </div>
-    </div>
+    <div id="menu-content"></div>
 </div>
 <footer>
-    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+    <p>Kontaktinformationen</p>
+    <p class="kontakt">Adresse: Simmershäuser Str. 119, 34125 Kassel</p>
+    <p class="kontakt">Telefon: +49561811664 </p>
+    <p class="kontakt">&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/menu-data')
+            .then(response => response.json())
+            .then(items => {
+                const categories = {};
+                items.forEach(item => {
+                    const category = item.category || 'Andere';
+                    if (!categories[category]) {
+                        categories[category] = [];
+                    }
+                    categories[category].push(item);
+                });
+                const menuContent = document.getElementById('menu-content');
+                for (const [category, items] of Object.entries(categories)) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.classList.add('menu-category');
+                    const categoryTitle = document.createElement('h2');
+                    categoryTitle.textContent = category;
+                    categoryDiv.appendChild(categoryTitle);
+                    items.forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.classList.add('menu-item');
+                        const itemName = document.createElement('h3');
+                        itemName.textContent = item.name;
+                        itemDiv.appendChild(itemName);
+                        const itemPrice = document.createElement('p');
+                        itemPrice.classList.add('price');
+                        itemPrice.textContent = item.price + ' €';
+                        itemDiv.appendChild(itemPrice);
+                        const itemDescription = document.createElement('p');
+                        itemDescription.textContent = item.description;
+                        itemDiv.appendChild(itemDescription);
+                        categoryDiv.appendChild(itemDiv);
+                    });
+                    menuContent.appendChild(categoryDiv);
+                }
+            })
+            .catch(error => console.error('Error fetching menu data:', error));
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
+</script>
 </body>
 </html>

@@ -27,5 +27,5 @@ public class Item {
 
     private BigDecimal price;
 
-    private String imageUrl;
+    private String category;
 }
