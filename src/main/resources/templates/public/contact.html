@@ -3,13 +3,84 @@
 <head>
     <title>Kontakt</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+        .map-container {
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-<h1>Kontaktinformationen</h1>
-<p>Adresse: Musterstraße 1, 12345 Musterstadt</p>
-<p>Telefon: 01234 / 567890</p>
-<p>E-Mail: info@restaurant.de</p>
-<div id="map" style="height: 400px; width: 100%;"></div>
+<header>
+    <h1>Kontakt</h1>
+</header>
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/menu}">Menü</a>
+    <a th:href="@{/contact}">Kontakt</a>
+</nav>
+<div class="container">
+    <h2>Kontaktinformationen</h2>
+    <p>Adresse: Musterstraße 1, 12345 Musterstadt</p>
+    <p>Telefon: 01234 / 567890</p>
+    <p>E-Mail: info@restaurant.de</p>
+
+    <div class="map-container">
+        <h2>Unsere Lage</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 <script>
     function initMap() {
         var restaurantLocation = {lat: 52.5200, lng: 13.4050}; // Пример координат

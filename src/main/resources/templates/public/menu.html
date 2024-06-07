@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Speisekarte</title>
+    <title>Unser Menü</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item img {
+            max-width: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .menu-item h3 {
+            margin: 0;
+            color: #333;
+        }
+        .menu-item p {
+            margin: 5px 0;
+        }
+        .menu-item .price {
+            font-weight: bold;
+            color: #444;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-<h1>Speisekarte</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Beschreibung</th>
-        <th>Preis</th>
-        <th>Bild</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${items}">
-        <td th:text="${item.name}">Artikelname</td>
-        <td th:text="${item.description}">Artikelbeschreibung</td>
-        <td th:text="${item.price}">Artikelpreis</td>
-        <td><img th:src="@{${item.imageUrl}}" alt="Bild von ${item.name}"></td>
-    </tr>
-    </tbody>
-</table>
+<header>
+    <h1>Unser Menü</h1>
+</header>
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/menu}">Menü</a>
+    <a th:href="@{/contact}">Kontakt</a>
+</nav>
+<div class="container">
+    <h2>Köstliche Gerichte</h2>
+    <div th:each="item : ${items}" class="menu-item">
+        <img th:src="@{${item.imageUrl}}" alt="Bild von [[${item.name}]]">
+        <div>
+            <h3 th:text="${item.name}">Gerichtname</h3>
+            <p th:text="${item.description}">Gerichtbeschreibung</p>
+            <p class="price" th:text="${item.price} + ' €'">Preis</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>
