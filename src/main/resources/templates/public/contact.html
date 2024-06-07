@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kontakt</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Kontaktinformationen</h1>
+<p>Adresse: Musterstraße 1, 12345 Musterstadt</p>
+<p>Telefon: 01234 / 567890</p>
+<p>E-Mail: info@restaurant.de</p>
+<div id="map" style="height: 400px; width: 100%;"></div>
+<script>
+    function initMap() {
+        var restaurantLocation = {lat: 52.5200, lng: 13.4050}; // Пример координат
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: restaurantLocation
+        });
+        var marker = new google.maps.Marker({
+            position: restaurantLocation,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

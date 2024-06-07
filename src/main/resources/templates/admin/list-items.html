@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Artikel verwalten</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Artikel verwalten</h1>
+<a href="/admin/items/add">Neuen Artikel hinzufügen</a>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Beschreibung</th>
+        <th>Preis</th>
+        <th>Bild</th>
+        <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.name}">Artikelname</td>
+        <td th:text="${item.description}">Artikelbeschreibung</td>
+        <td th:text="${item.price}">Artikelpreis</td>
+        <td><img th:src="@{${item.imageUrl}}" alt="Bild von ${item.name}" width="100"></td>
+        <td>
+            <a th:href="@{/admin/items/edit/{id}(id=${item.id})}">Bearbeiten</a> |
+            <a th:href="@{/admin/items/delete/{id}(id=${item.id})}">Löschen</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
