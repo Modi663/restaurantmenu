@@ -5,25 +5,32 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Login</h1>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
-<div th:if="${param.error}">
-    <p>Invalid username or password</p>
+<header>
+    <h1>Volkswohl Restaurant - Login</h1>
+</header>
+<nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
+</nav>
+<div class="container">
+    <h2>Login</h2>
+    <form th:action="@{/login}" method="post" class="form-centered">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="input-field">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="input-field">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
 </div>
-<div th:if="${param.logout}">
-    <p>You have been logged out</p>
-</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>

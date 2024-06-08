@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Fehler</title>
+    <title>Error</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Fehler</h1>
-<p>Es tut uns leid, aber es ist ein Fehler aufgetreten.</p>
-<p>Fehlercode: <span th:text="${status}">[Status]</span></p>
-<p>Nachricht: <span th:text="${error}">[Fehler]</span></p>
-<p>Details: <span th:text="${message}">[Nachricht]</span></p>
-<a th:href="@{/}">Zurück zur Startseite</a>
+<header>
+    <h1>Volkswohl Restaurant</h1>
+</header>
+<nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
+</nav>
+<div class="container">
+    <h2>Fehler</h2>
+    <p>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</p>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>

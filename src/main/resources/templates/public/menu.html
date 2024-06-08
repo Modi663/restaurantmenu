@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="de">
 <head>
     <title>Volkswohl Restaurant</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
@@ -44,17 +44,25 @@
                     categoryDiv.appendChild(categoryTitle);
                     items.forEach(item => {
                         const itemDiv = document.createElement('div');
-                        itemDiv.classList.add('menu-item');
+                        itemDiv.classList.add('product-tile');
+                        
+                        const productInfo = document.createElement('div');
+                        productInfo.classList.add('product-info');
+                        
                         const itemName = document.createElement('h3');
                         itemName.textContent = item.name;
-                        itemDiv.appendChild(itemName);
+                        productInfo.appendChild(itemName);
+                        
                         const itemPrice = document.createElement('p');
                         itemPrice.classList.add('price');
                         itemPrice.textContent = item.price + ' €';
-                        itemDiv.appendChild(itemPrice);
+                        productInfo.appendChild(itemPrice);
+                        
                         const itemDescription = document.createElement('p');
                         itemDescription.textContent = item.description;
-                        itemDiv.appendChild(itemDescription);
+                        productInfo.appendChild(itemDescription);
+                        
+                        itemDiv.appendChild(productInfo);
                         categoryDiv.appendChild(itemDiv);
                     });
                     menuContent.appendChild(categoryDiv);

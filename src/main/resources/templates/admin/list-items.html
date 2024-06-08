@@ -5,30 +5,39 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Artikel verwalten</h1>
-<a href="/admin/items/add">Neuen Artikel hinzufügen</a>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Beschreibung</th>
-        <th>Preis</th>
-        <th>Bild</th>
-        <th>Aktionen</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${items}">
-        <td th:text="${item.name}">Artikelname</td>
-        <td th:text="${item.description}">Artikelbeschreibung</td>
-        <td th:text="${item.price}">Artikelpreis</td>
-        <td><img th:src="@{${item.imageUrl}}" alt="Bild von ${item.name}" width="100"></td>
-        <td>
-            <a th:href="@{/admin/items/edit/{id}(id=${item.id})}">Bearbeiten</a> |
-            <a th:href="@{/admin/items/delete/{id}(id=${item.id})}">Löschen</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<header>
+    <h1>Volkswohl Restaurant - Admin Panel</h1>
+</header>
+<nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
+    <a href="/admin/items" class="nav-link active">Admin Panel</a>
+</nav>
+<div class="container">
+    <h2>Artikel verwalten</h2>
+    <a class="btn" href="/admin/items/add">Neuen Artikel hinzufügen</a>
+    <div class="product-list">
+        <div class="product-tile" th:each="item : ${items}">
+            <div class="product-info">
+                <h3 th:text="${item.name}">Artikelname</h3>
+                <p th:text="${item.description}">Artikelbeschreibung</p>
+                <p th:text="${item.price}">Artikelpreis</p>
+                <p th:text="${item.category}">Artikelkategorie</p>
+            </div>
+            <div class="product-actions">
+                <form th:action="@{/admin/items/edit/{id}(id=${item.id})}" method="get">
+                    <button type="submit" class="btn">Bearbeiten</button>
+                </form>
+                <form th:action="@{/admin/items/delete/{id}(id=${item.id})}" method="post">
+                    <button type="submit" class="btn">Löschen</button>
+                </form>                
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>

@@ -2,8 +2,6 @@ package com.example.restaurantmenu.controller;
 
 import com.example.restaurantmenu.model.Item;
 import com.example.restaurantmenu.service.ItemService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,9 +16,6 @@ public class PublicController {
 
     @Autowired
     private ItemService itemService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @GetMapping("/")
     public String home() {

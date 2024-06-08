@@ -12,7 +12,6 @@ body {
     box-sizing: border-box;
     background-image: url('../images/greek-pattern.png'); 
     background-position: center;
-
 }
 
 .nav-link.active {
@@ -82,6 +81,8 @@ h2 {
 }
 
 .menu-item {
+    display: flex;
+    flex-direction: column;
     background-color: #f4f4f9;
     padding: 15px;
     margin-bottom: 10px;
@@ -124,6 +125,66 @@ footer {
     text-align: center;
 }
 
+/* Стили для форм */
+.form-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Стили для плиток товаров */
+.product-tile {
+    background-color: #f4f4f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-tile:hover {
+    background-color: #e0e0e0;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.product-info h3, .product-info p {
+    margin: 0 10px;
+    font-size: 1.1em;
+}
+
+.product-info .price {
+    color: #4682B4;
+    font-weight: bold;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
 /* Адаптивные стили */
 @media (max-width: 1200px) {
     .container {
@@ -132,7 +193,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-
     body {
         background-size: contain; /* Изменим размер фона для мобильных устройств */
         background-position: top;
@@ -141,49 +201,61 @@ footer {
     header {
         font-size: 1.5em;
     }
+
     nav {
         padding: 10px;
     }
+
     nav a {
         margin: 5px;
-        font-size: 1.2em; /* Увеличен размер шрифта */
+        font-size: 1.2em;
     }
+
     .container {
         margin: 10px auto;
         padding: 15px;
         width: calc(100% - 40px);
         max-width: 100%;
     }
-    .menu-item h3 {
-        font-size: 1.4em; /* Увеличен размер шрифта */
+
+    .product-tile {
+        flex-direction: column;
     }
-    .menu-item p {
-        font-size: 1.3em; /* Увеличен размер шрифта */
+
+    .product-info {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .menu-item .price {
-        font-size: 1.3em; /* Увеличен размер шрифта */
+
+    .product-actions {
+        margin-top: 10px;
+        margin-left: 0;
+        justify-content: space-around;
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-
     body {
         background-size: contain; /* Изменим размер фона для мобильных устройств */
         background-position: top;
     }
 
     header {
-        font-size: 1.8em; /* Увеличен размер шрифта */
+        font-size: 1.8em;
         padding: 10px 0;
     }
+
     nav {
         padding: 10px;
     }
+
     nav a {
         margin: 2px;
-        font-size: 1.4em; /* Увеличен размер шрифта */
+        font-size: 1.4em;
         padding: 8px 10px;
     }
+
     .container {
         padding: 10px;
         margin: 10px auto;
@@ -191,20 +263,20 @@ footer {
         max-width: 100%;
         flex: 1;
     }
-    .menu-item {
-        padding: 10px; /* Уменьшение padding для меньших экранов */
+
+    .product-tile {
+        flex-direction: column;
     }
-    .menu-item h3 {
-        font-size: 1.6em; /* Увеличен размер шрифта */
+
+    .product-info {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .menu-item p {
-        font-size: 1.5em; /* Увеличен размер шрифта */
-    }
-    .menu-item .price {
-        font-size: 1.5em; /* Увеличен размер шрифта */
-    }
-    footer {
-        padding: 5px 0;
-        font-size: 1.2em; /* Увеличен размер шрифта */
+
+    .product-actions {
+        margin-top: 10px;
+        margin-left: 0;
+        justify-content: space-around;
+        width: 100%;
     }
 }

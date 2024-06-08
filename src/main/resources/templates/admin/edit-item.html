@@ -5,27 +5,41 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Artikel bearbeiten</h1>
-<form th:action="@{/admin/items/edit/{id}(id=${item.id})}" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:value="${item.name}">
-    </div>
-    <div>
-        <label for="description">Beschreibung:</label>
-        <textarea id="description" name="description" th:text="${item.description}"></textarea>
-    </div>
-    <div>
-        <label for="price">Preis:</label>
-        <input type="text" id="price" name="price" th:value="${item.price}">
-    </div>
-    <div>
-        <label for="imageUrl">Bild URL:</label>
-        <input type="text" id="imageUrl" name="imageUrl" th:value="${item.imageUrl}">
-    </div>
-    <div>
-        <button type="submit">Speichern</button>
-    </div>
-</form>
+<header>
+    <h1>Volkswohl Restaurant - Admin Panel</h1>
+</header>
+<nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
+    <a href="/admin/items" class="nav-link active">Admin Panel</a>
+</nav>
+<div class="container">
+    <h2>Artikel bearbeiten</h2>
+    <form th:action="@{/admin/items/edit/{id}(id=${item.id})}" method="post" class="form-centered">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="${item.name}" class="input-field">
+        </div>
+        <div class="form-group">
+            <label for="description">Beschreibung:</label>
+            <textarea id="description" name="description" th:text="${item.description}" class="input-field"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Preis:</label>
+            <input type="text" id="price" name="price" th:value="${item.price}" class="input-field">
+        </div>
+        <div class="form-group">
+            <label for="category">Kategorie:</label>
+            <input type="text" id="category" name="category" th:value="${item.category}" class="input-field">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Speichern</button>
+        </div>
+    </form>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>

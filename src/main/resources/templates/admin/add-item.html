@@ -5,27 +5,41 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Neuen Artikel hinzufügen</h1>
-<form th:action="@{/admin/items/add}" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-    </div>
-    <div>
-        <label for="description">Beschreibung:</label>
-        <textarea id="description" name="description"></textarea>
-    </div>
-    <div>
-        <label for="price">Preis:</label>
-        <input type="text" id="price" name="price">
-    </div>
-    <div>
-        <label for="imageUrl">Bild URL:</label>
-        <input type="text" id="imageUrl" name="imageUrl">
-    </div>
-    <div>
-        <button type="submit">Speichern</button>
-    </div>
-</form>
+<header>
+    <h1>Volkswohl Restaurant - Admin Panel</h1>
+</header>
+<nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/contact" class="nav-link">Kontakt</a>
+    <a href="/admin/items" class="nav-link active">Admin Panel</a>
+</nav>
+<div class="container">
+    <h2>Neuen Artikel hinzufügen</h2>
+    <form th:action="@{/admin/items/add}" method="post" class="form-centered">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-field">
+        </div>
+        <div class="form-group">
+            <label for="description">Beschreibung:</label>
+            <textarea id="description" name="description" class="input-field"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Preis:</label>
+            <input type="text" id="price" name="price" class="input-field">
+        </div>
+        <div class="form-group">
+            <label for="category">Kategorie:</label>
+            <input type="text" id="category" name="category" class="input-field">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Speichern</button>
+        </div>
+    </form>
+</div>
+<footer>
+    <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
+</footer>
 </body>
 </html>

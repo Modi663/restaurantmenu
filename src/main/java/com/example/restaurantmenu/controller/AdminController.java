@@ -3,6 +3,8 @@ package com.example.restaurantmenu.controller;
 import com.example.restaurantmenu.model.Item;
 import com.example.restaurantmenu.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -47,9 +49,18 @@ public class AdminController {
         return "redirect:/admin/items";
     }
 
-    @GetMapping("/items/delete/{id}")
+    @PostMapping("/items/delete/{id}")
     public String deleteItem(@PathVariable Long id) {
         itemService.deleteById(id);
         return "redirect:/admin/items";
+    }
+
+    @GetMapping
+    public String adminRedirect(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails != null) {
+            return "redirect:/admin/items";
+        } else {
+            return "redirect:/login";
+        }
     }
 }
