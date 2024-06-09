@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="de">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volkswohl Restaurant</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -10,7 +15,7 @@
 </header>
 <nav>
     <a href="/" class="nav-link">Home</a>
-    <a href="/menu" class="nav-link">Menü</a>
+    <a href="/menu" class="nav-link active">Menü</a>
     <a href="/contact" class="nav-link">Kontakt</a>
 </nav>
 <div class="container">
@@ -35,41 +40,47 @@
                     }
                     categories[category].push(item);
                 });
+
                 const menuContent = document.getElementById('menu-content');
                 for (const [category, items] of Object.entries(categories)) {
+                    items.sort((a, b) => a.price - b.price); // Сортировка по цене
+
                     const categoryDiv = document.createElement('div');
                     categoryDiv.classList.add('menu-category');
                     const categoryTitle = document.createElement('h2');
                     categoryTitle.textContent = category;
                     categoryDiv.appendChild(categoryTitle);
+
                     items.forEach(item => {
                         const itemDiv = document.createElement('div');
                         itemDiv.classList.add('product-tile');
-                        
+
                         const productInfo = document.createElement('div');
                         productInfo.classList.add('product-info');
-                        
+
                         const itemName = document.createElement('h3');
                         itemName.textContent = item.name;
                         productInfo.appendChild(itemName);
-                        
+
                         const itemPrice = document.createElement('p');
                         itemPrice.classList.add('price');
                         itemPrice.textContent = item.price + ' €';
                         productInfo.appendChild(itemPrice);
-                        
+
                         const itemDescription = document.createElement('p');
                         itemDescription.textContent = item.description;
                         productInfo.appendChild(itemDescription);
-                        
+
                         itemDiv.appendChild(productInfo);
                         categoryDiv.appendChild(itemDiv);
                     });
+
                     menuContent.appendChild(categoryDiv);
                 }
             })
             .catch(error => console.error('Error fetching menu data:', error));
     });
+
     document.querySelectorAll('.nav-link').forEach(link => {
         if (link.href === window.location.href) {
             link.classList.add('active');
