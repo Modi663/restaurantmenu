@@ -19,7 +19,7 @@ public class PublicController {
 
     @GetMapping("/")
     public String home() {
-        return "public/home";
+        return "public/index";
     }
 
     @GetMapping("/menu")

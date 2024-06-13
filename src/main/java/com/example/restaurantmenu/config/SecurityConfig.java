@@ -16,12 +16,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests
-                                .requestMatchers("/", "/menu", "/contact").permitAll()
-                                .requestMatchers("/admin/**").authenticated()
-                                .anyRequest().permitAll()
+            .authorizeHttpRequests((authorizeRequests) -> authorizeRequests
+                .requestMatchers("/", "/menu", "/contact").permitAll()
+                .requestMatchers("/admin/**").authenticated()
+                .anyRequest().permitAll()
                 )
+
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login")

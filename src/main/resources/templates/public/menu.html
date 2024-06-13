@@ -1,91 +1,161 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="de">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volkswohl Restaurant</title>
+    <title>Volkswohl Restaurant - Menü</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<header>
-    <h1>Volkswohl Restaurant</h1>
-</header>
-<nav>
-    <a href="/" class="nav-link">Home</a>
-    <a href="/menu" class="nav-link active">Menü</a>
-    <a href="/contact" class="nav-link">Kontakt</a>
-</nav>
-<div class="container">
-    <div id="menu-content"></div>
-</div>
-<footer>
-    <p>Kontaktinformationen</p>
-    <p class="kontakt">Adresse: Simmershäuser Str. 119, 34125 Kassel</p>
-    <p class="kontakt">Telefon: +49561811664 </p>
-    <p class="kontakt">&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
-</footer>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/menu-data')
-            .then(response => response.json())
-            .then(items => {
-                const categories = {};
-                items.forEach(item => {
-                    const category = item.category || 'Andere';
-                    if (!categories[category]) {
-                        categories[category] = [];
-                    }
-                    categories[category].push(item);
-                });
+    <!-- Navbar & Hero Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h1>Volkswohl Restaurant</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"  href="menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                const menuContent = document.getElementById('menu-content');
-                for (const [category, items] of Object.entries(categories)) {
-                    items.sort((a, b) => a.price - b.price); // Сортировка по цене
+    <div class="container-xxl py-5 hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Unser Menü</h1>
+            <nav aria-label="breadcrumb">
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
 
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.classList.add('menu-category');
-                    const categoryTitle = document.createElement('h2');
-                    categoryTitle.textContent = category;
-                    categoryDiv.appendChild(categoryTitle);
 
+    <!-- Menu Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Most Popular Items</h1>
+            </div>
+            <div id="menu-content" class="row g-4">
+                <!-- Динамическое содержимое будет добавлено сюда -->
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-3 pb-3 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-3">
+            <div class="row g-3 justify-content-center">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h4 class="section-title ff-secondary text-primary fw-normal mb-3">Kontaktieren Sie Uns</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Simmershäuser Str. 119, 34125 Kassel, Deutschland</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+49 561 811664</p>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <h4 class="section-title ff-secondary text-primary fw-normal mb-3">Öffnungszeiten</h4>
+                    <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                    <p>09AM - 09PM</p>
+                    <h5 class="text-light fw-normal">Sunday</h5>
+                    <p>10AM - 08PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+     <!-- JavaScript Libraries -->
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFbA7B9k2mCqW0kZPPhPqvM2RZ1aJ9QcXH7NZTyyI7RSL27hnj3kF4y0T5nABQf6ZUKF0ObqD1wvSA==" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js" integrity="sha512-8dI5Q0HcXGz1z8biO68gTbPspuyVmgO1Kz8QtXoUpYJl8QdJik4U1NBzcmO3KSnRyDeA2NqYfG4Je39wiwr5xg==" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-8rXl2TgWGFylZBXm+lJ5Y4G+uGfD3PfdjXZMj/V2Tn+GZB9NYB/0C0+g7NxCW+wjoXBLhy9PKLoYCI+XxVHRMA==" crossorigin="anonymous"></script>
+ 
+
+    <!-- Template Javascript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/menu-data')
+                .then(response => response.json())
+                .then(items => {
+                    const categories = {};
                     items.forEach(item => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.classList.add('product-tile');
-
-                        const productInfo = document.createElement('div');
-                        productInfo.classList.add('product-info');
-
-                        const itemName = document.createElement('h3');
-                        itemName.textContent = item.name;
-                        productInfo.appendChild(itemName);
-
-                        const itemPrice = document.createElement('p');
-                        itemPrice.classList.add('price');
-                        itemPrice.textContent = item.price + ' €';
-                        productInfo.appendChild(itemPrice);
-
-                        const itemDescription = document.createElement('p');
-                        itemDescription.textContent = item.description;
-                        productInfo.appendChild(itemDescription);
-
-                        itemDiv.appendChild(productInfo);
-                        categoryDiv.appendChild(itemDiv);
+                        const category = item.category || 'Andere';
+                        if (!categories[category]) {
+                            categories[category] = [];
+                        }
+                        categories[category].push(item);
                     });
-
-                    menuContent.appendChild(categoryDiv);
-                }
-            })
-            .catch(error => console.error('Error fetching menu data:', error));
-    });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add('active');
-        }
-    });
-</script>
+    
+                    const menuContent = document.getElementById('menu-content');
+                    for (const [category, items] of Object.entries(categories)) {
+                        const categoryDiv = document.createElement('div');
+                        categoryDiv.classList.add('col-12', 'mb-4');
+                        const categoryTitle = document.createElement('h2');
+                        categoryTitle.textContent = category;
+                        categoryTitle.classList.add('text-primary', 'text-center', 'mb-4');
+                        categoryDiv.appendChild(categoryTitle);
+    
+                        const rowDiv = document.createElement('div');
+                        rowDiv.classList.add('row');
+    
+                        items.forEach(item => {
+                            const itemDiv = document.createElement('div');
+                            itemDiv.classList.add('col-lg-6', 'mb-4');
+    
+                            const card = document.createElement('div');
+                            card.classList.add('card', 'h-100');
+    
+                            const cardBody = document.createElement('div');
+                            cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-start');
+    
+                            const productInfo = document.createElement('div');
+                            productInfo.classList.add('w-100', 'd-flex', 'flex-column', 'text-start');
+    
+                            const itemName = document.createElement('h5');
+                            itemName.classList.add('d-flex', 'justify-content-between', 'border-bottom', 'pb-2');
+                            itemName.innerHTML = `<span>${item.name}</span><span class="text-primary">${item.price} €</span>`;
+                            
+                            const itemDescription = document.createElement('small');
+                            itemDescription.classList.add('fst-italic');
+                            itemDescription.textContent = item.description;
+    
+                            productInfo.appendChild(itemName);
+                            productInfo.appendChild(itemDescription);
+                            cardBody.appendChild(productInfo);
+                            card.appendChild(cardBody);
+                            itemDiv.appendChild(card);
+                            rowDiv.appendChild(itemDiv);
+                        });
+    
+                        categoryDiv.appendChild(rowDiv);
+                        menuContent.appendChild(categoryDiv);
+                    }
+                })
+                .catch(error => console.error('Error fetching menu data:', error));
+        });
+    </script>
 </body>
 </html>

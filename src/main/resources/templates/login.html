@@ -3,60 +3,64 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <style>
-        .form-group {
-            position: relative;
-        }
-        .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </head>
 <body>
-<header>
-    <h1>Volkswohl Restaurant - Login</h1>
-</header>
-<nav>
-    <a href="/" class="nav-link">Home</a>
-    <a href="/menu" class="nav-link">Menü</a>
-    <a href="/contact" class="nav-link">Kontakt</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h1>Volkswohl Restaurant</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/menu">Menü</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
-<div class="container">
-    <h2>Login</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Login</h2>
     <form th:action="@{/login}" method="post" class="form-centered">
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" class="input-field">
+            <input type="text" id="username" name="username" class="form-control">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" class="input-field">
-            <span class="toggle-password" onclick="togglePassword()">👁</span>
+            <input type="password" id="password" name="password" class="form-control">
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn">Login</button>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
 </div>
-<footer>
+<footer class="footer mt-5 py-3 bg-dark text-white text-center">
     <p>&copy; 2024 Restaurant. Alle Rechte vorbehalten.</p>
 </footer>
-<script>
-    function togglePassword() {
-        const passwordField = document.getElementById('password');
-        const togglePasswordIcon = document.querySelector('.toggle-password');
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            togglePasswordIcon.textContent = '🙈';
-        } else {
-            passwordField.type = 'password';
-            togglePasswordIcon.textContent = '👁';
-        }
-    }
-</script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

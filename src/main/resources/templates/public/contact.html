@@ -1,211 +1,125 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="de">
 <head>
-    <title>Volkswohl Restaurant - Griechenland in Kassel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volkswohl Restaurant - Kontakt</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k6xlhILrY7GhUyoWNa2u5X4+XyxRIB2eNT7z2XdxtPf7rPO9nCEb5ph8OSk8f2CjBnxhCGCm9EWRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<header>
-    <h1>Volkswohl Restaurant - Authentische Griechische Küche</h1>
-</header>
-<nav>
-    <a href="/" class="nav-link">Home</a>
-    <a href="/menu" class="nav-link">Menü</a>
-    <a href="/contact" class="nav-link active">Kontakt</a>
-</nav>
-<div class="container">
-    <h2>Kontaktinformationen</h2>
-    <p class="kontakt"><strong>Adresse:</strong> Simmershäuser Str. 119, 34125 Kassel</p>
-    <p class="kontakt"><strong>Telefon:</strong> +49 561 811664</p>
-    <p class="kontakt"><strong>E-Mail:</strong> info@volkswohl-restaurant.de</p>
-    <p class="kontakt"><strong>Öffnungszeiten:</strong> Montag - Sonntag: 12:00 - 23:00 Uhr</p>
-    <div class="map-container">
-        <h2>Unsere Lage</h2>
-        <div id="map"></div>
+    <!-- Navbar & Hero Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <h1>Volkswohl Restaurant</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-xxl py-5 hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Kontaktieren Sie Uns</h1>
+            <nav aria-label="breadcrumb">
+            </nav>
+        </div>
     </div>
-</div>
-<footer>
-    <p>&copy; 2024 Volkswohl Restaurant. Alle Rechte vorbehalten.</p>
-</footer>
-<script>
-    function initMap() {
-        var restaurantLocation = {lat: 51.3229, lng: 9.4969}; // Координаты для Kassel
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: restaurantLocation,
-            styles: [
-                {
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#f5f5f5"
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#616161"
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "color": "#f5f5f5"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative.land_parcel",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#bdbdbd"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#eeeeee"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#757575"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#e5e5e5"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#9e9e9e"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#ffffff"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#757575"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#dadada"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#616161"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#9e9e9e"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit.line",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#e5e5e5"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit.line",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#757575"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "color": "#c9c9c9"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#9e9e9e"
-                        }
-                    ]
-                }
-            ]
-        });
-        var marker = new google.maps.Marker({
-            position: restaurantLocation,
-            map: map
-        });
-    }
-    document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add('active');
-        }
-    });
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <!-- Navbar & Hero End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Kontaktieren Sie Uns</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                    <iframe class="position-relative rounded w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14100.173718729056!2d9.49699654460832!3d51.33720567408542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb39c5c1c7a5bf%3A0x4e8349028962277b!2sVolkswohl!5e0!3m2!1sru!2s!4v1717955354196!5m2!1sru!2s"
+                        frameborder="0" style="min-height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+                </div>
+                <div class="col-md-6 contact-info">
+                    <div class="wow fadeInUp info-block" data-wow-delay="0.2s">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-map-marker-alt fa-2x text-primary me-3"></i>
+                            <div class="ps-3">
+                                <h5 class="mb-2">Adresse</h5>
+                                <p class="mb-0">Simmershäuser Str. 119, 34125 Kassel, Deutschland</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wow fadeInUp info-block" data-wow-delay="0.3s">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-phone-alt fa-2x text-primary me-3"></i>
+                            <div class="ps-3">
+                                <h5 class="mb-2">Telefon</h5>
+                                <p class="mb-0">+49 561 811664</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wow fadeInUp info-block" data-wow-delay="0.4s">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-clock fa-2x text-primary me-3"></i>
+                            <div class="ps-3">
+                                <h5 class="mb-2">Öffnungszeiten</h5>
+                                <p class="mb-0">Montag - Samstag: 12:00 - 23:00 Uhr</p>
+                                <p class="mb-0">Sonntag: 12:00 - 22:00 Uhr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-3 pb-3 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-3">
+            <div class="row g-3 justify-content-center">
+                <div class="col-12 text-center">
+                    <h4 class="section-title ff-secondary text-primary fw-normal mb-3">Guten Appetit</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
