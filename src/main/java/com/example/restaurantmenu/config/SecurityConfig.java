@@ -43,7 +43,7 @@ public class SecurityConfig {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withDefaultPasswordEncoder()
                 .username("admin")
-                .password("admin_password")
+                .password("97IJB{o76sG{dgbKyfS41y")
                 .roles("ADMIN")
                 .build());
         return manager;
