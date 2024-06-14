@@ -256,7 +256,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4SranXG3Y4d_Twn5ZElqDXV-maWj53i0&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOH_uBQ0Kn9d1cfcJ_apkvNNsztjPeIo0&libr=places"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const placeId = 'ChIJv6XHwcU5u0cReydiiQJJg04'; // Замените на ваш Place ID
